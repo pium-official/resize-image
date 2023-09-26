@@ -20,7 +20,7 @@ npm install
 ### 실행
 
 ```bash
-node resize.js --file-name pium.png
+node resize.js --input-file pium.png
 ```
 
 ### 커맨드라인 옵션
