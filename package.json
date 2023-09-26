@@ -1,0 +1,24 @@
+{
+  "name": "resize-image",
+  "version": "1.0.0",
+  "description": "피움 서비스에서 이미지 크기와 확장자를 조정하는 작업에 사용하는 코드",
+  "main": "resize.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pium-official/resize-image.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pium-official/resize-image/issues"
+  },
+  "homepage": "https://github.com/pium-official/resize-image#readme",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "sharp": "^0.32.6"
+  }
+}
