@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { Command } from 'commander';
-import Sharp from 'sharp';
+import sharp from 'sharp';
 
 // 변환 함수
 const convertImageTo = async (dir, filename, width, type, format) => {
@@ -8,17 +8,21 @@ const convertImageTo = async (dir, filename, width, type, format) => {
   const inputPath = join(dir, filename);
   const outputPath = join(dir, `${filenameWithoutExt}.${type}.${format.toLowerCase()}`);
 
-  const sharp = new Sharp(inputPath);
-  const { width: imageWidth } = await sharp.metadata();
-
+  const image = sharp(inputPath);
+  const { width: imageWidth } = await image.metadata();
+  
   // 이미지가 목표보다 이미 작을 경우 굳이 조정하지 않음
   if (imageWidth <= width) {
-    await sharp.toFile(outputPath)
+    await image
+      .withMetadata()
+      .toFile(outputPath);
+
     return false;
   }
 
-  await sharp
+  await image
     .resize(width)
+    .withMetadata()
     .toFormat(format.toLowerCase(), { quality: 100 })
     .toFile(outputPath);
 
@@ -45,5 +49,5 @@ if (!inputFile) {
 }
 
 // 변환
-convertImageTo(dir, inputFile, Number(size), nickname, 'png');
 convertImageTo(dir, inputFile, Number(size), nickname, 'webp');
+convertImageTo(dir, inputFile, Number(size), nickname, 'png');
