@@ -35,13 +35,31 @@ node resize.js --input-file pium.png
 ### 예시
 
 ```bash
-#실행
+# 실행
 node resize.js -dir static -i pium.gif -s 512 -n small
 
-#원본 위치
+# 원본 위치
 ./static/pium.gif
 
-#결과물 위치
+# 결과물 위치
 ./static/pium.small.png
 ./static/pium.small.webp
+```
+
+## bash.sh 파일
+
+javascript 구문을 한번 더 감싸서 쉘 스크립트로 해당 코드를 수행할 수 있습니다.
+해당 작업을 crontab에 스케줄링으로 등록할 수 있습니다.
+
+```bash
+# 사용법
+사용법: ./bash.sh [옵션]
+옵션:
+  -d, --dir           대상 디렉토리 (필수 입력값)
+  -s, --size SIZE     이미지 크기 (기본: 256)
+  -n, --name          이미지 중간이름 (기본: 이미지 크기)
+  -h, --help          도움말 메시지 출력
+
+# 실행
+./bash.sh -s 256 -n "x-small" -d "./static"
 ```
